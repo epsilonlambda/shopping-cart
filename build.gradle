@@ -42,9 +42,7 @@ def customTaskGroup = 'Shopping Cart Tasks'
 
 processResources.dependsOn('updateUI')
 
-task cleanAll(dependsOn: ['clean', 'ui:clean'], type: Delete, group: customTaskGroup) {
-	delete 'src/main/resources/public'
-}
+task cleanAll(dependsOn: ['clean', 'ui:clean'], type: Delete, group: customTaskGroup)
 
 task testAll(dependsOn: ['test', 'ui:test'], group: customTaskGroup)
 

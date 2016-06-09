@@ -15,7 +15,7 @@ apply plugin: 'spring-boot'
 jar {
 	baseName = 'elr-shopping-cart'
 	version =  '0.0.1'
-}
+}.dependsOn('ui:build')
 
 repositories {
 	mavenCentral()
@@ -36,4 +36,8 @@ task wrapper(type: Wrapper) {
 
 bootRun {
 	addResources = true
-}
+}.dependsOn('ui:build')
+
+task cleanAll(dependsOn: ['clean', 'ui:clean'])
+
+task testAll(dependsOn: ['test', 'ui:test'])

@@ -1,0 +1,14 @@
+plugins {
+    id "com.moowork.node" version "0.12"
+}
+
+['build', 'clean', 'test'].each { npmTask ->
+    task (npmTask, type: NpmTask, dependsOn: ['npmSetup', 'nodeSetup', 'npmInstall']) {
+        args = ['run', npmTask]
+    }
+}
+
+node {
+    version = '0.10.36'
+    npmVersion = '2.4.1'
+}

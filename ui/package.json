@@ -1,0 +1,9 @@
+{
+  "name": "shopping-cart-ui",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "echo Build not supported",
+    "clean": "echo Clean not supported",
+    "test": "echo Test not supported"
+  }
+}

@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "build": "webpack",
-    "clean": "echo Clean not supported",
+    "clean": "rimraf build",
     "test": "echo Test not supported"
   },
   "devDependencies": {
+    "rimraf": "^2.5.2",
     "webpack": "^1.13.1"
   }
 }

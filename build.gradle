@@ -15,7 +15,7 @@ apply plugin: 'spring-boot'
 jar {
 	baseName = 'elr-shopping-cart'
 	version =  '0.0.1'
-}.dependsOn('ui:build')
+}
 
 repositories {
 	mavenCentral()
@@ -36,8 +36,19 @@ task wrapper(type: Wrapper) {
 
 bootRun {
 	addResources = true
-}.dependsOn('ui:build')
+}.dependsOn('updateUI')
 
-task cleanAll(dependsOn: ['clean', 'ui:clean'])
+def customTaskGroup = 'Shopping Cart Tasks'
 
-task testAll(dependsOn: ['test', 'ui:test'])
+processResources.dependsOn('updateUI')
+
+task cleanAll(dependsOn: ['clean', 'ui:clean'], type: Delete, group: customTaskGroup) {
+	delete 'src/main/resources/public'
+}
+
+task testAll(dependsOn: ['test', 'ui:test'], group: customTaskGroup)
+
+task updateUI(dependsOn: ['ui:build'], type: Copy, group: customTaskGroup) {
+	from('ui/build')
+	into('src/main/resources/public')
+}

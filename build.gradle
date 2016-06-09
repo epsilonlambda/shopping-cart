@@ -50,3 +50,10 @@ task updateUI(dependsOn: ['ui:build'], type: Copy, group: customTaskGroup) {
 	from('ui/build')
 	into('src/main/resources/public')
 }
+
+task stage(dependsOn: ['assemble', 'makeProcfile'])
+
+task makeProcfile {
+	delete('Procfile')
+	file('Procfile') << 'web: java -jar build/lib/*.jar --server.port=$PORT'
+}

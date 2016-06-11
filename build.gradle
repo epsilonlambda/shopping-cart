@@ -42,7 +42,7 @@ bootRun {
 
 def customTaskGroup = 'Shopping Cart Tasks'
 
-processResources.dependsOn('updateUI')
+//processResources.dependsOn('updateUI')
 
 task cleanAll(dependsOn: ['clean', 'ui:clean'], type: Delete, group: customTaskGroup)
 

@@ -30,7 +30,7 @@ public class ProductRepositoryTest extends TestCase {
         for(Product product : repository.findAll()) {
             if(product.getName().equals(testName) &&
                     product.getDescription().equals(testDescription) &&
-                    product.getCost() == 1) {
+                    product.getPrice() == 1) {
                 assertTrue(true);
                 return;
             }

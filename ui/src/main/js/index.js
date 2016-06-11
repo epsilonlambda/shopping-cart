@@ -9,5 +9,8 @@ import $ from 'jquery';
 
 $(document).ready(() => {
     const container = $(document.body).append('<div />');
-    ReactDOM.render(<Catalog />, container[0]);
+    $.get('/api/v1/products', (products) => {
+            ReactDOM.render(<Catalog products={products}/>, container[0]);
+        }
+    );
 });

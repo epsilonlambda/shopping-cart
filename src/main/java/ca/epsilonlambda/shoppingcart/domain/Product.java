@@ -21,12 +21,12 @@ public class Product {
     private String description;
 
     @Column(nullable = false)
-    private float cost;
+    private float price;
 
     public Product(String name, String description, float cost) {
         this.name = name;
         this.description = description;
-        this.cost = cost;
+        this.price = cost;
     }
 
     public Product() {}
@@ -43,7 +43,7 @@ public class Product {
         return description;
     }
 
-    public float getCost() {
-        return cost;
+    public float getPrice() {
+        return price;
     }
 }

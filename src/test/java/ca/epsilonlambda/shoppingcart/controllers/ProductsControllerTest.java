@@ -1,8 +1,10 @@
 package ca.epsilonlambda.shoppingcart.controllers;
 
+import ca.epsilonlambda.shoppingcart.service.ProductService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -24,9 +26,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ProductsControllerTest {
     private MockMvc mvc;
 
+    @Autowired
+    ProductService productService;
+
     @Before
     public void setUp() {
-        mvc = MockMvcBuilders.standaloneSetup(new ProductsController()).build();
+        mvc = MockMvcBuilders.standaloneSetup(new ProductsController(productService)).build();
     }
 
     @Test

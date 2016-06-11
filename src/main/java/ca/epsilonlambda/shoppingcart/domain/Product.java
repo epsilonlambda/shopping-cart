@@ -29,6 +29,8 @@ public class Product {
         this.cost = cost;
     }
 
+    public Product() {}
+
     public int getId() {
         return id;
     }

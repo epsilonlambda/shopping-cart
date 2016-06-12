@@ -3,7 +3,7 @@ plugins {
 }
 
 ['build', 'clean', 'test'].each { npmTask ->
-    task (npmTask, type: NpmTask, dependsOn: ['npmSetup', 'nodeSetup', 'npmInstall']) {
+    task (npmTask, type: NpmTask, dependsOn: ['nodeSetup', 'npmSetup', 'npmInstall']) {
         args = ['run', npmTask]
     }
 }
@@ -11,4 +11,5 @@ plugins {
 node {
     version = '0.10.36'
     npmVersion = '2.4.1'
+    download = true
 }

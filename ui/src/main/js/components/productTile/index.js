@@ -5,6 +5,7 @@
 import React from 'react';
 import {PropTypes} from 'react';
 import {Button} from 'react-bootstrap';
+import {FormattedNumber} from 'react-intl';
 import './productTile.css';
 
 export default class ProductTile extends React.Component {
@@ -23,7 +24,9 @@ export default class ProductTile extends React.Component {
                 <img src={imageUrl} />
                 <div className="esc-gen-title">{name}</div>
                 <div className="esc-gen-desc">{description}</div>
-                <div className="esc-gen-price">{'$' + price}</div>
+                <div className="esc-gen-price">
+                    <FormattedNumber style="currency" currency="CAD" value={price} />
+                </div>
                 <Button className="esc-gen-add-to-cart-btn">Add to cart</Button>
             </div>
         )

@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {PropTypes} from 'react';
+import './productTile.css';
 
 export default class ProductTile extends React.Component {
     static propTypes = {

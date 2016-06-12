@@ -5,7 +5,7 @@
 
 import React from 'react';
 import {PropTypes} from 'react';
-import ProductTile from './productTile.js';
+import ProductTile from './productTile';
 
 export default class Catalog extends React.Component {
     static propTypes = {

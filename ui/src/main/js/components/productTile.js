@@ -9,17 +9,19 @@ export default class ProductTile extends React.Component {
     static propTypes = {
         name: PropTypes.string.isRequired,
         description: PropTypes.string,
-        price: PropTypes.number.isRequired
+        price: PropTypes.number.isRequired,
+        imageUrl: PropTypes.string.isRequired
     };
 
     render() {
-        const {name, description, price} = this.props;
+        const {name, description, price, imageUrl} = this.props;
 
         return (
-            <div class="esc-product-tile">
-                <div class="esc-gen-title">{name}</div>
-                <div class="esc-gen-desc">{description}</div>
-                <div class="esc-gen-price">{price}</div>
+            <div className="esc-product-tile">
+                <img src={imageUrl} />
+                <div className="esc-gen-title">{name}</div>
+                <div className="esc-gen-desc">{description}</div>
+                <div className="esc-gen-price">{price}</div>
             </div>
         )
     }

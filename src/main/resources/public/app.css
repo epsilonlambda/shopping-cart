@@ -1,0 +1,16 @@
+.esc-product-tile {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    overflow: hidden;
+}
+
+.esc-product-tile img {
+    height: 10rem;
+    width: 10rem;
+}
+
+.esc-gen-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}

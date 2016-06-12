@@ -23,6 +23,9 @@ public class Product {
     @Column(nullable = false)
     private float price;
 
+    @Column(nullable = false)
+    private String image;
+
     public Product(String name, String description, float cost) {
         this.name = name;
         this.description = description;
@@ -46,4 +49,9 @@ public class Product {
     public float getPrice() {
         return price;
     }
+
+    public String getImage() {
+        return image;
+    }
+
 }

@@ -57,5 +57,5 @@ task stage(dependsOn: ['assemble', 'makeProcfile'])
 
 task makeProcfile {
 	delete('Procfile')
-	file('Procfile') << 'web: java -jar build/lib/*.jar --server.port=$PORT'
+	file('Procfile') << 'web: java -jar build/libs/*.jar --server.port=$PORT'
 }

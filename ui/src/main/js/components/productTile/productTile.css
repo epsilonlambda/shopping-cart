@@ -1,16 +1,38 @@
 .esc-product-tile {
-    width: 15rem;
-    height: 15rem;
+    width: 25rem;
+    height: 28rem;
     float: left;
     overflow: hidden;
+    padding: 3rem;
 }
 
 .esc-product-tile img {
     height: 10rem;
     width: 10rem;
+    margin-left: 4.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .esc-gen-title {
     font-weight: bold;
     text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.esc-gen-desc {
+    font-size: 1rem;
+    color: #666666;
+    height: 4rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.esc-gen-add-to-cart-btn {
+    width: 100%;
+}
+
+.esc-gen-price {
+    margin-bottom: 0.5rem;
 }

@@ -26,10 +26,11 @@ public class Product {
     @Column(nullable = false)
     private String image;
 
-    public Product(String name, String description, float cost) {
+    public Product(String name, String description, float cost, String image) {
         this.name = name;
         this.description = description;
         this.price = cost;
+        this.image = image;
     }
 
     public Product() {}

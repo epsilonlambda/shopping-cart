@@ -24,7 +24,7 @@ public class ProductRepositoryTest extends TestCase {
         final String testName = "testName";
         final String testDescription = "testDescription";
 
-        Product p = new Product(testName, testDescription, 1);
+        Product p = new Product(testName, testDescription, 1, "");
         repository.save(p);
 
         for(Product product : repository.findAll()) {

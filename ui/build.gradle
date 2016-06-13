@@ -9,7 +9,7 @@ plugins {
 }
 
 node {
-    version = '0.10.36'
+    version = '4.4.5'
     npmVersion = '2.4.1'
     download = true
 }

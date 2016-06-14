@@ -1,5 +1,3 @@
-package ca.epsilonlambda.shoppingcart.helper;
-
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 

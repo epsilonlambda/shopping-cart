@@ -1,0 +1,11 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+}
+
+apply plugin: 'java'
+
+dependencies {
+    compile 'io.jsonwebtoken:jjwt:0.6.0'
+}

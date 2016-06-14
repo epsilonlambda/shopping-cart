@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/api/v1/products", "/api/v1/rpc/anonymous_login").anonymous().and().csrf().disable()
+        http.authorizeRequests().antMatchers("/", "/api/v1/products", "/api/v1/rpc/anonymous_login").permitAll().and().csrf().disable()
                 .authorizeRequests().antMatchers("/api/v1/**").authenticated().and().addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     }

@@ -4,9 +4,12 @@ import ca.epsilonlambda.shoppingcart.domain.User;
 import ca.epsilonlambda.shoppingcart.service.UserService;
 import ca.epsilonlambda.shoppingcart.service.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
 
 /**
  * Created by Kirill on 6/13/2016.
@@ -26,5 +29,11 @@ public class UsersController {
     public String anonymousLogin() {
         User user = userService.createAndStoreAnonymousUser();
         return tokenService.getAuthToken(user);
+    }
+
+    @RequestMapping(value = "/api/v1/me")
+    public User me(Principal principal) {
+        User user = (User) ((Authentication) principal).getPrincipal();
+        return user;
     }
 }

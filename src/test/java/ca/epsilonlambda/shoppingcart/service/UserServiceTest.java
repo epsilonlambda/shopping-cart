@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.stubbing.Answer;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashSet;
@@ -21,6 +22,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Runner.class)
+@EnableWebSecurity
 public class UserServiceTest extends TestCase {
     UserService service;
     UserRepository mockRepository;

@@ -7,4 +7,5 @@ import ca.epsilonlambda.shoppingcart.domain.User;
  */
 public interface UserTokenService {
     String getAuthToken(User user);
+    User getUserFromToken(String token);
 }

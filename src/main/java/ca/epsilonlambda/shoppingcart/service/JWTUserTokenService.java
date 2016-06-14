@@ -2,6 +2,7 @@ package ca.epsilonlambda.shoppingcart.service;
 
 import ca.epsilonlambda.shoppingcart.domain.User;
 import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,5 +22,17 @@ public class JWTUserTokenService implements UserTokenService {
     public String getAuthToken(User user) {
         JwtBuilder jwtBuilder = Jwts.builder().setSubject(user.getId()).signWith(signatureAlgorithm, jwtSecretKey);
         return jwtBuilder.compact();
+    }
+
+    @Override
+    public User getUserFromToken(String token) {
+        try
+        {
+            String userId = Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJws(token).getBody().getSubject();
+            return new User(userId);
+        }
+        catch(JwtException e) {
+            return null;
+        }
     }
 }

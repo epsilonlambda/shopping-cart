@@ -1,6 +1,8 @@
 package ca.epsilonlambda.shoppingcart.integration;
 
 import ca.epsilonlambda.shoppingcart.Runner;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,11 +30,17 @@ public class UsersControllerIntegrationTest {
     @Value("${local.server.port}")
     int port;
 
+    @Value("${ca.epsilonlambda.shoppingcart.jwt_secret_key}")
+    String jwtSecret;
+
+
     @Test
     public void anonymousLoginShouldGenerateDifferentIds() {
         HashSet<String> ids = new HashSet<>();
         for(int i = 0; i < 10; i++) {
-            String userId = restTemplate.getForEntity("http://localhost:" + port + "/api/v1/anonymous_login", String.class).getBody();
+            String token = restTemplate.getForEntity("http://localhost:" + port + "/api/v1/anonymous_login", String.class).getBody();
+            Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
+            String userId = claims.getSubject();
             assertFalse(ids.contains(userId));
             ids.add(userId);
         }

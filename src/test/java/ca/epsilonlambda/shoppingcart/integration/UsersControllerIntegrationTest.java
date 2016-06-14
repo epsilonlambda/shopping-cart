@@ -38,7 +38,7 @@ public class UsersControllerIntegrationTest {
     public void anonymousLoginShouldGenerateDifferentIds() {
         HashSet<String> ids = new HashSet<>();
         for(int i = 0; i < 10; i++) {
-            String token = restTemplate.getForEntity("http://localhost:" + port + "/api/v1/anonymous_login", String.class).getBody();
+            String token = restTemplate.postForEntity("http://localhost:" + port + "/api/v1/rpc/anonymous_login", null, String.class).getBody();
             Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
             String userId = claims.getSubject();
             assertFalse(ids.contains(userId));

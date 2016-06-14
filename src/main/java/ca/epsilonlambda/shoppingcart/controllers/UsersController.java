@@ -5,6 +5,7 @@ import ca.epsilonlambda.shoppingcart.service.UserService;
 import ca.epsilonlambda.shoppingcart.service.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,7 +22,7 @@ public class UsersController {
         this.tokenService = tokenService;
     }
 
-    @RequestMapping("/api/v1/anonymous_login")
+    @RequestMapping(value = "/api/v1/rpc/anonymous_login", method = RequestMethod.POST)
     public String anonymousLogin() {
         User user = userService.createAndStoreAnonymousUser();
         return tokenService.getAuthToken(user);

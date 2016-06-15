@@ -40,8 +40,8 @@ public class OrderItemsController {
         return orderItemService.saveItem(item);
     }
 
-    @RequestMapping(value = (ENDPOINT + "/{productId}"), method = { RequestMethod.POST })
-    public OrderItem postItem(Principal principal, @PathVariable("productId") int productId, @RequestBody OrderItem newItem) {
+    @RequestMapping(value = (ENDPOINT), method = { RequestMethod.POST })
+    public OrderItem postItem(Principal principal, @RequestBody OrderItem newItem) {
         User user = getUser(principal);
         return orderItemService.saveItem(newItem);
     }

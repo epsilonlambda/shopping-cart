@@ -11,7 +11,7 @@ function addToCart(product) {
             };
 
             apiRequester.apiRequest({
-                path: '/api/v1/ordered_products/' + product.id, method: 'POST', body: requestBody,
+                path: '/api/v1/ordered_products', method: 'POST', body: requestBody,
                 authenticate: true, success: () => dispatch(shoppingCartLinkActions.fetchItems())
             });
 

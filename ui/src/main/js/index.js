@@ -3,10 +3,13 @@
  */
 
 import Catalog from './components/catalog.js';
+import ShoppingCartLink from './components/shoppingCartLink';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import $ from 'jquery';
 import {IntlProvider} from 'react-intl';
+import {Provider} from 'react-redux';
+import store from './redux/store.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -32,9 +35,14 @@ $(document).ready(() => {
     // TODO: [ET-11] Factor out the app root component?
     $.get('/api/v1/products', (products) => {
             ReactDOM.render(
-                <IntlProvider>
-                    <Catalog products={products}/>
-                </IntlProvider>,
+                <Provider store={store}>
+                    <IntlProvider>
+                        <div>
+                            <ShoppingCartLink />
+                            <Catalog products={products}/>
+                        </div>
+                    </IntlProvider>
+                </Provider>,
                 container[0]);
         }
     );

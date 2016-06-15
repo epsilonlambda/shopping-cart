@@ -30,8 +30,8 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public void saveItem(OrderItem item) {
-        repository.save(item);
+    public OrderItem saveItem(OrderItem item) {
+        return repository.save(item);
     }
 
     @Override

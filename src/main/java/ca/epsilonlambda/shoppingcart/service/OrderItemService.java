@@ -10,6 +10,6 @@ import java.util.List;
 public interface OrderItemService {
     List<OrderItem> getItems(String userId);
     OrderItem getItem(String userId, int productId);
-    void saveItem(OrderItem item);
+    OrderItem saveItem(OrderItem item);
     void deleteItem(String userId, int productId);
 }

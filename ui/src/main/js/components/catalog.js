@@ -14,7 +14,7 @@ export default class Catalog extends React.Component {
     
     renderProducts(products) {
         return products.map(p => (
-            <ProductTile name={p.name} description={p.description} price={p.price} imageUrl={p.image} />
+            <ProductTile id={p.id} name={p.name} description={p.description} price={p.price} imageUrl={p.image} />
         ));
     }
 

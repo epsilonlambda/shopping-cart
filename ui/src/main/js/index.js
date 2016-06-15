@@ -10,6 +10,8 @@ import $ from 'jquery';
 import {IntlProvider} from 'react-intl';
 import {Provider} from 'react-redux';
 import store from './redux/store.js';
+import shoppingCartLinkActions from './components/shoppingCartLink/actionCreators.js';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -30,6 +32,8 @@ $(document).ready(() => {
         console.log('Saved session');
         requester.apiRequest({path: '/api/v1/me', success: (data) => console.log(data), authenticate: true});
     }
+    
+    store.dispatch(shoppingCartLinkActions.fetchItems());
     
     const container = $(document.body).append('<div />');
     // TODO: [ET-11] Factor out the app root component?

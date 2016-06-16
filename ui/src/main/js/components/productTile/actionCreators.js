@@ -1,5 +1,5 @@
-import shoppingCartLinkActions from '../shoppingCartLink/actionCreators.js';
 import * as apiRequester from '../../helpers/apiRequester.js';
+import orderedProductRepo from '../../orderedProductsRepository.js';
 
 function addToCart(product) {
     return (dispatch) => {
@@ -9,12 +9,8 @@ function addToCart(product) {
                 owner: {id: user.id},
                 quantity: 1
             };
-
-            apiRequester.apiRequest({
-                path: '/api/v1/ordered_products', method: 'POST', body: requestBody,
-                authenticate: true, success: () => dispatch(shoppingCartLinkActions.fetchItems())
-            });
-
+            
+            dispatch(orderedProductRepo.actionCreators.create(requestBody));
         }});
     };
 }

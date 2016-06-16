@@ -10,7 +10,6 @@ import $ from 'jquery';
 import {IntlProvider} from 'react-intl';
 import {Provider} from 'react-redux';
 import store from './redux/store.js';
-import shoppingCartLinkActions from './components/shoppingCartLink/actionCreators.js';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,21 +18,24 @@ import 'bootstrap/dist/css/bootstrap-theme.min.css';
 
 import * as requester from './helpers/apiRequester.js';
 
+import orderedProductsRepo from './orderedProductsRepository.js';
+
 
 $(document).ready(() => {
     if(!requester.getToken()) {
         requester.tokenRequest({
             path: '/api/v1/rpc/anonymous_login', method: 'POST', success: () => {
                 requester.apiRequest({path: '/api/v1/me', success: (data) => console.log(data), authenticate: true});
+                store.dispatch(orderedProductsRepo.actionCreators.retrieveAll());
             }
         });
     }
     else {
         console.log('Saved session');
         requester.apiRequest({path: '/api/v1/me', success: (data) => console.log(data), authenticate: true});
+        store.dispatch(orderedProductsRepo.actionCreators.retrieveAll());
     }
     
-    store.dispatch(shoppingCartLinkActions.fetchItems());
     
     const container = $(document.body).append('<div />');
     // TODO: [ET-11] Factor out the app root component?

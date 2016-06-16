@@ -4,10 +4,10 @@
  */
 
 import {combineReducers} from 'redux';
-import shoppingCartLinkReducer from '../components/shoppingCartLink/reducer.js';
+import orderedProductsRepo from '../orderedProductsRepository.js';
 
 const appReducer = combineReducers({
-    shoppingCartLink: shoppingCartLinkReducer
+    orderedProductsRepo: orderedProductsRepo.reducer
 });
 
 export default appReducer;

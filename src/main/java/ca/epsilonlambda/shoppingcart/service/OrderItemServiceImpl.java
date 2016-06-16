@@ -5,6 +5,7 @@ import ca.epsilonlambda.shoppingcart.domain.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,14 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public List<OrderItem> getItems(String userId) {
-        return repository.findByOwner_Id(userId);
+        List<OrderItem> items = repository.findByOwner_Id(userId);
+        List<OrderItem> pendingItems = new ArrayList<>();
+        for(OrderItem item : items) {
+            if(!item.isSubmitted())
+                pendingItems.add(item);
+        }
+
+        return pendingItems;
     }
 
     @Override
@@ -38,5 +46,17 @@ public class OrderItemServiceImpl implements OrderItemService {
     public void deleteItem(String userId, int productId) {
         OrderItem item = repository.findFirstByOwner_IdAndProduct_Id(userId, productId);
         repository.delete(item);
+    }
+
+    @Override
+    public void submitItems(String userId) {
+        List<OrderItem> items = repository.findByOwner_Id(userId);
+        for(OrderItem item : items) {
+            if(!item.isSubmitted()){
+                item.setSubmitted(true);
+            }
+        }
+
+        repository.save(items);
     }
 }

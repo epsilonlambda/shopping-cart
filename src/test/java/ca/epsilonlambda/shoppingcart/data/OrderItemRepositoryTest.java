@@ -42,7 +42,7 @@ public class OrderItemRepositoryTest {
     public void setUp() {
         userRepository.save(sampleUser);
         productRepository.save(sampleProduct);
-        orderItemRepository.save(new OrderItem(sampleUser, sampleProduct, 11));
+        orderItemRepository.save(new OrderItem(sampleUser, sampleProduct, 11, false));
     }
 
     @After

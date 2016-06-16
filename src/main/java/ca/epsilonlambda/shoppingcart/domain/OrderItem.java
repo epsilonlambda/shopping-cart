@@ -20,12 +20,16 @@ public class OrderItem {
     @Column(nullable = false)
     private int quantity;
 
+    @Column(nullable = false)
+    private boolean isSubmitted;
+
     public OrderItem() {}
 
-    public OrderItem(User owner, Product product, int quantity) {
+    public OrderItem(User owner, Product product, int quantity, boolean isSubmitted) {
         this.owner = owner;
         this.product = product;
         this.quantity = quantity;
+        this.isSubmitted = isSubmitted;
     }
 
     public User getOwner() {
@@ -42,5 +46,13 @@ public class OrderItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isSubmitted() {
+        return isSubmitted;
+    }
+
+    public void setSubmitted(boolean submitted) {
+        isSubmitted = submitted;
     }
 }

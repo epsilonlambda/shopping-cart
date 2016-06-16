@@ -44,13 +44,13 @@ bootRun {
 
 def customTaskGroup = 'Shopping Cart Tasks'
 
-processResources.dependsOn('updateUI')
+processResources.dependsOn('ui:build', 'updateUI')
 
 task cleanAll(dependsOn: ['clean', 'ui:clean'], type: Delete, group: customTaskGroup)
 
 task testAll(dependsOn: ['test', 'ui:test'], group: customTaskGroup)
 
-task updateUI(dependsOn: ['ui:build'], type: Copy, group: customTaskGroup) {
+task updateUI(type: Copy, group: customTaskGroup) {
 	from('ui/build')
 	into('src/main/resources/public')
 }

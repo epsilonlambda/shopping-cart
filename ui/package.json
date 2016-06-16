@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "webpack",
+    "continuous-rebuild": "webpack --watch",
     "clean": "rimraf build",
     "test": "karma start --single-run"
   },

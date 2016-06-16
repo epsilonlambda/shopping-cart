@@ -7,9 +7,13 @@ import {PropTypes} from 'react';
 import {Button} from 'react-bootstrap';
 import {FormattedNumber} from 'react-intl';
 import './productTile.css';
+import {connect} from 'react-redux';
+import actionCreators from './actionCreators.js';
+import store from '../../redux/store.js';
 
 export default class ProductTile extends React.Component {
     static propTypes = {
+        id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         description: PropTypes.string,
         price: PropTypes.number.isRequired,
@@ -17,7 +21,7 @@ export default class ProductTile extends React.Component {
     };
 
     render() {
-        const {name, description, price, imageUrl} = this.props;
+        const {name, description, price, imageUrl, addToCart, id} = this.props;
 
         return (
             <div className="esc-product-tile">
@@ -27,7 +31,7 @@ export default class ProductTile extends React.Component {
                 <div className="esc-gen-price">
                     <FormattedNumber style="currency" currency="CAD" value={price} />
                 </div>
-                <Button className="esc-gen-add-to-cart-btn">Add to cart</Button>
+                <Button className="esc-gen-add-to-cart-btn" onClick={() => store.dispatch(actionCreators.addToCart(this.props))}>Add to cart</Button>
             </div>
         )
     }

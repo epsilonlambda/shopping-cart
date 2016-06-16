@@ -2,7 +2,7 @@ plugins {
     id "com.moowork.node" version "0.12"
 }
 
-['build', 'clean', 'test'].each { npmTask ->
+['build', 'clean', 'test', 'continuous-rebuild'].each { npmTask ->
     task (npmTask, type: NpmTask, dependsOn: ['nodeSetup', 'npmSetup', 'npmInstall']) {
         args = ['run', npmTask]
     }

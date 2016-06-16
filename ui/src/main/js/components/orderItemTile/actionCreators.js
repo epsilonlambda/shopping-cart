@@ -1,14 +1,7 @@
-import * as apiRequester from '../../helpers/apiRequester.js';
+import orderedItemsRepo from '../../orderedProductsRepository.js'
 
 function deleteItem(productId) {
-    return () => {
-        apiRequester.apiRequest({
-            path: '/api/v1/ordered_products/' + productId,
-            authenticate: true,
-            method: 'DELETE',
-            success: () => console.log("TODO")
-        });
-    };
+    return orderedItemsRepo.actionCreators.remove(productId);
 }
 
 export default {

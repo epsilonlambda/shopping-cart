@@ -1,0 +1,8 @@
+.esc-quantity-control .esc-gen-label {
+    float: left;
+}
+
+.esc-quantity-control .esc-gen-number {
+    float: left;
+    width: 4rem;
+}

@@ -37,7 +37,7 @@ export default function createActionCreators(repositoryId, endpoint, authenticat
             apiRequester.apiRequest({
                 method: 'PUT',
                 path: endpoint + '/' + id,
-                body: JSON.stringify(item),
+                body: item,
                 success: () => dispatch(refresh())
             });
         };

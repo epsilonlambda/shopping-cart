@@ -32,6 +32,7 @@ dependencies {
 	compile 'io.jsonwebtoken:jjwt:0.6.0'
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.springframework.boot:spring-boot-starter-test:1.3.5.RELEASE'
+	compile 'org.postgresql:postgresql:9.4-1202-jdbc42'
 }
 
 task wrapper(type: Wrapper) {
@@ -59,5 +60,5 @@ task stage(dependsOn: ['assemble', 'makeProcfile'])
 
 task makeProcfile {
 	delete('Procfile')
-	file('Procfile') << 'web: java -jar build/libs/*.jar --server.port=$PORT'
+	file('Procfile') << 'web: java -jar build/libs/*.jar --server.port=$PORT --spring.datasource.url=$JDBC_DATABASE_URL'
 }

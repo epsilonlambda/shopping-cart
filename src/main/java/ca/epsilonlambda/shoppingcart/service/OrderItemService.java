@@ -12,4 +12,5 @@ public interface OrderItemService {
     OrderItem getItem(String userId, int productId);
     OrderItem saveItem(OrderItem item);
     void deleteItem(String userId, int productId);
+    void submitItems(String userId);
 }

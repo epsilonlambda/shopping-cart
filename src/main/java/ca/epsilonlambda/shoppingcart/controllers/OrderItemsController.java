@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 public class OrderItemsController {
     final static String ENDPOINT = "/api/v1/ordered_products";
+    final static String RPC_ENDPOINT = "/api/v1/rpc/submit_order";
 
     private OrderItemService orderItemService;
 
@@ -50,6 +51,12 @@ public class OrderItemsController {
     public void deleteOrderItem(Principal principal, @PathVariable("productId") int productId) {
         User user = getUser(principal);
         orderItemService.deleteItem(user.getId(), productId);
+    }
+
+    @RequestMapping(value = RPC_ENDPOINT, method = RequestMethod.POST)
+    public void submitOrderItems(Principal principal) {
+        User user = getUser(principal);
+        orderItemService.submitItems(user.getId());
     }
 
     private User getUser(Principal principal) {

@@ -10,6 +10,7 @@ import $ from 'jquery';
 import {IntlProvider} from 'react-intl';
 import {Provider} from 'react-redux';
 import store from './redux/store.js';
+import {Tabs, Tab} from 'react-bootstrap';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -43,10 +44,14 @@ $(document).ready(() => {
             ReactDOM.render(
                 <Provider store={store}>
                     <IntlProvider>
-                        <div>
-                            <ShoppingCartLink />
-                            <Catalog products={products}/>
-                        </div>
+                        <Tabs>
+                            <Tab eventKey={1} title="Catalog">
+                                <Catalog products={products}/>
+                            </Tab>
+                            <Tab eventKey={2} title={<ShoppingCartLink />}>
+                                <h1>Your Order</h1>
+                            </Tab>
+                        </Tabs>
                     </IntlProvider>
                 </Provider>,
                 container[0]);

@@ -4,6 +4,7 @@
 
 import Catalog from './components/catalog.js';
 import ShoppingCartLink from './components/shoppingCartLink';
+import OrderSummary from './components/orderSummary';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import $ from 'jquery';
@@ -50,6 +51,7 @@ $(document).ready(() => {
                             </Tab>
                             <Tab eventKey={2} title={<ShoppingCartLink />}>
                                 <h1>Your Order</h1>
+                                <OrderSummary />
                             </Tab>
                         </Tabs>
                     </IntlProvider>

@@ -1,0 +1,15 @@
+.esc-order-item-tile .esc-gen-controls {
+    width: 13rem;
+    float: left;
+    display: flex;
+    flex-direction: column;
+
+}
+.esc-order-item-tile .esc-gen-product-name {
+    font-weight: bold;
+}
+
+.esc-order-item-tile .esc-gen-info {
+    width: 25rem;
+    float: left;
+}

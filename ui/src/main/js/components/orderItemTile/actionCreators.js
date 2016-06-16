@@ -1,6 +1,7 @@
 import orderedItemsRepo from '../../orderedProductsRepository.js'
 import * as apiRequester from '../../helpers/apiRequester';
 import orderedProductRepo from '../../orderedProductsRepository.js';
+import './orderItemTile.css';
 
 function deleteItem(productId) {
     return orderedItemsRepo.actionCreators.remove(productId);

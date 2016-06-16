@@ -12,7 +12,7 @@ export function apiRequest({path, method, body, success, fail, authenticate}) {
         processData: false,
         data: body !== undefined ? JSON.stringify(body) : undefined,
         contentType: 'application/json',
-        url: 'http://localhost:8080' + path,
+        url: /*'http://localhost:8080' +*/ path,
         headers: authenticate ? { 'Authorization': 'Bearer ' + getToken() } : undefined
     }).done(success).fail(fail);
 }
